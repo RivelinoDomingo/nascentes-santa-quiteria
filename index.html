@@ -89,6 +89,38 @@
             padding: 0 1.5rem;
         }
 
+        /* Estilos da Seção Ações e Botão Continuar Lendo */
+        .expanded-content {
+            display: none;
+            margin-top: -0.5rem;
+        }
+
+        .read-more-btn {
+            background: none;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 0.95rem;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .read-more-btn:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .read-more-btn .arrow {
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+
         section {
             background: var(--card-bg);
             padding: 2rem;
@@ -313,6 +345,7 @@
         <ul>
             <li><a href="#sobre">O Projeto</a></li>
             <li><a href="#diretrizes">Diretrizes & APP</a></li>
+            <li><a href="#acoes">Ações Realizadas</a></li>
             <li><a href="#parcerias">Engajamento</a></li>
             <li><a href="#galeria">Galeria de Fotos</a></li>
         </ul>
@@ -349,6 +382,39 @@
             <p>
                 Nas áreas identificadas como prioritárias, a conservação é feita por meio do cercamento, limpeza de resíduos e contenção de ervas daninhas que prejudicam a flora original. Nos locais onde a mata ciliar foi degradada, orienta-se o reflorestamento com espécies nativas ou o isolamento da área para que a regeneração natural aconteça.
             </p>
+        </section>
+
+        <section id="acoes">
+            <h2>Ações já Realizadas no Projeto</h2>
+
+            <!-- Prévia (Sempre visível) -->
+            <p>
+                Da minha parte, Rivelino Domingo de Oliveira, as primeiras ações foram, fazer um estudo acerca da lei que norteia os interesse de preservação referente as nascentes, lagos e fluxos de águas naturais, depois fomos para campo eu e Jorge Alexandre de Oliveira, tirar algumas fotos e pegar coordenadas geográficas...
+            </p>
+
+            <!-- Conteúdo Completo (Oculto inicialmente) -->
+            <div id="acoes-completo" class="expanded-content">
+                <p>
+                    ...para ser possível definir áreas de interesse nos entornos e fazer um estudo mais aprofundado do perímetro, e definir pontos que carecem mais atenção.
+                    Feito esse estudo e levantamento inicial, e aproveitando que já tinha uma reunião da Associação dos Produtores e Melhoramentos de Santa Quitéria agendada para o sábado, 29/08/2026. Levei esses dados como um dos membros da associação e fiz a apresentação do plano de preservação das nascentes.
+                </p>
+                <p>
+                    Foi uma ótima reunião, teve ótimo engajamento e discussão sobre esse tema tão importante, a quantidade de pessoas presentes foi bem acima do normal de outras reuniões da associação, o que mostra que é uma demanda importante para comunidade em si. Dentre associados e visitantes foram um total de 23 pessoas que estiveram presente, opinando e debatendo sobre. No final fiz uma votação para saber dos presentes, quem ali era favorável a iniciativa, e estaria disposto a ajudar de alguma forma para materialização desse projeto. O resultado foi unânime, todos os 23 presentes concordaram em tocar o projeto para frente, aperfeiçoar e materializar. Nesse aspecto de votação, fiz uma <a href="https://www.whocan.org/pt/vote/xcP0HLy2bUMmRXvpu03UjCiLkhl2/-P054jQhMIqN3eWC9PPu" target="_blank" rel="noopener noreferrer">
+                    enquete
+                </a> online para que as pessoas da comunidade pudessem votar se eram a favor ou contra a iniciativa, a enquete foi encerrada no sábado 29/08/2026 com 21 votos no total desses 19 a favor do projeto, 1 contra e um não opinou.
+                </p>
+                <p>
+                    O que foi definido é que tentaremos algo totalmente voluntário e comunitário, dentre as medidas tratadas a principal foi a de dividir a responsabilidade e os impactos entre toda a população, então quem puder doar algum pequeno perímetro de terra ali no entorno vai ser de grande valor, mas caso for necessário ficou aberta a possibilidade de compra de terrenos por parte da Associação, esse dinheiro viria de doações, vaquinha, leilão comunitário; ou ações nesse sentido, a fim de pagar por alguma propriedade ou por materiais, como arame, mudas ou itens que se façam necessários. Com isso o leque de possibilidade de ajuda cresce bastante, e para que não puder contribuir com algum valor, ou pedaço de terra, ficou a possibilidade da ajuda na fase de implantação, ajudar a cercar o espaço, replantar mudas da flora local, ou fazer limpeza ou controle de alguma espécie invasora na área (isso perante laudo técnico).
+                 </p>
+                 <p>
+                    Então por mais que a iniciativa seja civil e agora teve apoio de parte da sociedade, vamos a partir desse ponto angariar ajuda de órgão públicos mais próximos como a secretaria do meio ambiente do município, tentar parcerias com empresas da região. De forma que possamos tocar esse projeto da melhor forma possível, convergir toda essa energia em algo tão nobre e necessário!
+                 </p>
+            </div>
+
+            <!-- Botão/Link para Expandir -->
+            <button id="btn-read-more" class="read-more-btn" onclick="toggleAcoes()">
+                Continuar lendo <span class="arrow">↓</span>
+            </button>
         </section>
 
         <section id="parcerias">
@@ -429,11 +495,21 @@
     </div>
 
     <footer>
-        <h3>Legislação Ambiental de Referência</h3>
+        <h3> Referências: </h3>
         <ul>
             <li>
                 <a href="https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12651.htm" target="_blank" rel="noopener noreferrer">
-                    📜 Lei Nº 12.651/2012 — Código Florestal Brasileiro
+                   * 📜 Lei Nº 12.651/2012 — Código Florestal Brasileiro
+                </a>
+            </li>
+            <li>
+                <a href="https://www.whocan.org/pt/vote/xcP0HLy2bUMmRXvpu03UjCiLkhl2/-P054jQhMIqN3eWC9PPu" target="_blank" rel="noopener noreferrer">
+                   * Enquete feita
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/RivelinoDomingo/nascentes-santa-quiteria" target="_blank" rel="noopener noreferrer">
+                   * Dados do projeto hospedados no Github, com documentos, imagens e textos sobre o que foi feito até agora
                 </a>
             </li>
         </ul>
@@ -495,6 +571,21 @@
                 currentIndex = (currentIndex + 1) % visibleItems.length;
                 openLightbox(currentIndex);
             }
+
+            function toggleAcoes() {
+            const content = document.getElementById('acoes-completo');
+            const btn = document.getElementById('btn-read-more');
+
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+                btn.innerHTML = 'Continuar lendo <span class="arrow">↓</span>';
+            } else {
+                content.style.display = 'block';
+                btn.innerHTML = 'Recolher texto <span class="arrow">↑</span>';
+                }
+            }
+
+            window.toggleAcoes=toggleAcoes;
 
             galleryItems.forEach((item) => {
                 item.addEventListener('click', () => {
