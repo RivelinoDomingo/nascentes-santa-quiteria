@@ -332,6 +332,112 @@
             background-color: #25d366;
             text-decoration: none;
         }
+        /* Estilização da Timeline / Cronograma */
+        .timeline {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 10px;
+            left: 14px;
+            width: 3px;
+            background-color: #e0e0e0;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 45px;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .timeline-badge {
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: bold;
+            z-index: 1;
+        }
+
+        /* Etapa Concluída */
+        .timeline-item.completed .timeline-badge {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 0 0 3px #e8f5e9;
+        }
+
+        .timeline-item.completed .timeline-text {
+            color: var(--text-main);
+        }
+
+        /* Etapa Pendente / Próxima */
+        .timeline-item.pending .timeline-badge {
+            background-color: #ffffff;
+            border: 2px solid #b0bec5;
+            color: #78909c;
+        }
+
+        .timeline-item.pending .timeline-text {
+            color: var(--text-muted);
+        }
+        /* Bloco de Compartilhamento */
+        .share-box {
+            background-color: #e8f5e9;
+            border: 2px dashed var(--primary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .share-box h3 {
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .share-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.6rem;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 0.8rem;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .share-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .share-feedback {
+            display: block;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: bold;
+        }
     </style>
 
     <!-- Google tag (gtag.js) -->
@@ -358,6 +464,7 @@
             <li><a href="#diretrizes">Diretrizes & APP</a></li>
             <li><a href="#acoes">Ações Realizadas</a></li>
             <li><a href="#parcerias">Engajamento</a></li>
+            <li><a href="#cronograma">Cronograma</a></li>
             <li><a href="#galeria">Galeria de Fotos</a></li>
         </ul>
     </nav>
@@ -373,6 +480,16 @@
                 Água é um bem imensurável e essencial para a vida. Não podemos permitir que o esgotamento hídrico registrado em povoados vizinhos aconteça com as nossas fontes. Centenas de pessoas, assim como os animais de criação da agricultura familiar, dependem diretamente desses recursos hídricos.
             </p>
         </section>
+
+        <!-- Bloco de Apoio e Compartilhamento -->
+        <div class="share-box">
+            <h3>📢 Apoie esta Iniciativa!</h3>
+            <p>Ajude a divulgar o Projeto de Preservação das Nascentes de Santa Quitéria para mais moradores e parceiros.</p>
+            <button class="share-btn" onclick="compartilharProjeto()">
+                <span class="share-icon">🔗</span> Compartilhar Projeto
+            </button>
+            <span id="share-feedback" class="share-feedback"></span>
+        </div>
 
         <section id="diretrizes">
             <h2>Adequação Ambiental e Áreas de Preservação (APP)</h2>
@@ -437,6 +554,49 @@
             <p>
                 Para dar solidez e transparência ao movimento, atuamos em conjunto com a <strong>Associação dos Produtores e Melhoramentos de Santa Quitéria</strong>. Esta parceria formaliza nossa comunicação com órgãos ambientais do município e do estado, viabilizando novos estudos de campo, apoio técnico e recursos para o projeto.
             </p>
+        </section>
+
+        <section id="cronograma">
+            <h2>Cronograma do Projeto</h2>
+
+            <ul class="timeline">
+                <!-- Etapas Concluídas -->
+                <li class="timeline-item completed">
+                    <span class="timeline-badge">✓</span>
+                    <span class="timeline-text">Estudos e levantamento inicial <strong>não técnico</strong>.</span>
+                </li>
+                <li class="timeline-item completed">
+                    <span class="timeline-badge">✓</span>
+                    <span class="timeline-text">Apresentar e angariar apoio perante a comunidade e Associação.</span>
+                </li>
+                <li class="timeline-item completed">
+                    <span class="timeline-badge">✓</span>
+                    <span class="timeline-text">Buscar parcerias e ajuda técnica.</span>
+                </li>
+            </ul>
+
+            <!-- Conteúdo Oculto (Próximas Etapas) -->
+            <div id="cronograma-completo" class="expanded-content">
+                <ul class="timeline">
+                    <li class="timeline-item pending">
+                        <span class="timeline-badge">4</span>
+                        <span class="timeline-text">Estudo mais aprofundado e técnico.</span>
+                    </li>
+                    <li class="timeline-item pending">
+                        <span class="timeline-badge">5</span>
+                        <span class="timeline-text">Notificar e apresentar o projeto a proprietários dos entornos.</span>
+                    </li>
+                    <li class="timeline-item pending">
+                        <span class="timeline-badge">6</span>
+                        <span class="timeline-text">Reunião com a comunidade para tratar das objetividades do projeto.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Botão para Expandir -->
+            <button id="btn-read-more-cronograma" class="read-more-btn" onclick="toggleCronograma()">
+                Mais Etapas Aqui <span class="arrow">↓</span>
+            </button>
         </section>
 
         <section id="galeria">
@@ -601,7 +761,47 @@
                 }
             }
 
+            function toggleCronograma() {
+            const content = document.getElementById('cronograma-completo');
+            const btn = document.getElementById('btn-read-more-cronograma');
+
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+                btn.innerHTML = 'Mais Etapas Aqui <span class="arrow">↓</span>';
+            } else {
+                content.style.display = 'block';
+                btn.innerHTML = 'Recolher Etapas <span class="arrow">↑</span>';
+                }
+            }
+
             window.toggleAcoes=toggleAcoes;
+            window.toggleCronograma=toggleCronograma;
+
+            function compartilharProjeto() {
+                const shareData = {
+                    title: 'Preservação das Nascentes - Santa Quitéria',
+                    text: 'Conheça e apoie o projeto de preservação das nascentes e recursos hídricos de Santa Quitéria (Ibitiara - BA)!',
+                    url: window.location.href
+                };
+
+                const feedback = document.getElementById('share-feedback');
+
+                // Verifica se o navegador suporta o compartilhamento nativo (celulares/tablets)
+                if (navigator.share) {
+                    navigator.share(shareData)
+                        .catch((err) => console.log('Compartilhamento cancelado ou não realizado:', err));
+                } else {
+                    // Alternativa para computadores: Copia o link para a área de transferência
+                    navigator.clipboard.writeText(window.location.href).then(() => {
+                        feedback.textContent = ' Link copiado para a área de transferência!';
+                        setTimeout(() => { feedback.textContent = ''; }, 3000);
+                    }).catch(() => {
+                        feedback.textContent = ' Erro ao copiar o link.';
+                    });
+                }
+            }
+
+            window.compartilharProjeto = compartilharProjeto;
 
             galleryItems.forEach((item) => {
                 item.addEventListener('click', () => {
